@@ -17,6 +17,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {ModalPortal} from 'react-native-modals';
 import store, {persistor} from '@State/store';
 import {Provider} from 'react-redux';
+
 const App = () => {
   return (
     <Provider store={store}>

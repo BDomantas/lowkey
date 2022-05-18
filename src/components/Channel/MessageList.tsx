@@ -28,7 +28,6 @@ const MessageList = ({
   const insets = useSafeAreaInsets();
 
   const onSendPress = (message: MessageContent) => {
-    console.log(message);
     return dispatch(
       sendMessage({message: message, channelId, type: ContentType.text}),
     ).unwrap();

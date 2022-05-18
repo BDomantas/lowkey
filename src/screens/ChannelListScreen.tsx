@@ -40,7 +40,6 @@ const ChannelListScreen = ({navigation}: ScreenProps): JSX.Element => {
   }, [dispatch]);
 
   const renderItem: ListRenderItem<Channel> = ({item}) => {
-    console.log('items', item);
     return (
       <Item
         item={item}

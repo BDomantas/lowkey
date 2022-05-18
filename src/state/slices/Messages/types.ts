@@ -38,6 +38,9 @@ export interface MessageContent {
   content: string | PollMessage;
 }
 
+export interface PollMessageContent {
+  content: PollMessage;
+}
 export interface Option {
   id: string;
   content: string;
@@ -56,3 +59,10 @@ export interface SendVoteParams {
   optionId: string;
   channelId: string;
 }
+
+// TypeGuard to safetly typecheck message type
+export const isPollMessage = (
+  message: MessageContent,
+): message is PollMessageContent => {
+  return (message as PollMessageContent).content.question !== undefined;
+};

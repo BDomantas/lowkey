@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, ListRenderItem, Text, Image} from 'react-native';
 import {
   ContentType,
+  isPollMessage,
   Message as MessageType,
 } from '@State/slices/Messages/types';
 import {Colors} from '@Styles/Colors';
@@ -26,7 +27,6 @@ const Message: ListRenderItem<MessageType> = ({item}): JSX.Element => {
     );
   };
 
-  console.log(item);
   if (item.type === ContentType.text) {
     return (
       <View style={styles.container}>
@@ -40,7 +40,7 @@ const Message: ListRenderItem<MessageType> = ({item}): JSX.Element => {
       </View>
     );
   }
-  if (item.type === ContentType.poll && user) {
+  if (item.type === ContentType.poll && user && isPollMessage(item.message)) {
     return (
       <PollMessage
         poll={item.message.content}

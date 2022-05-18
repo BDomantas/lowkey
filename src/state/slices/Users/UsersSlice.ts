@@ -11,19 +11,12 @@ export type User = {
 };
 
 export const usersAdapter = createEntityAdapter<User>({
-  // Assume IDs are stored in a field other than `book.id`
   selectId: user => user.userId,
 });
-
-// const fetchMessages = createAsyncThunk('m/fetchMessages', async roomId => {
-//   return chatsAPI.fetchMessages(roomId);
-// });
 
 interface UserStateExtraFields {
   currentUser?: User;
 }
-
-//interface UserState extends EntityState<User>, UserStateExtraFields {}
 
 export const usersSlice = createSlice({
   name: 'users',

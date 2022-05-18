@@ -2,6 +2,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {RootState} from 'state/store';
 import {
   ContentType,
+  isPollMessage,
   SendMessageParams,
   SendMessageResult,
   SendVoteParams,
@@ -22,10 +23,8 @@ export const sendMessage = createAsyncThunk<
       `sending message - ${message} of type ${type} in channel - ${channelId}`,
     );
     const {users} = getState();
-    console.log(message);
     const currentUserId = users.currentUser?.userId;
-    if (currentUserId && message) {
-      console.log('naujas naujas', type);
+    if (currentUserId && message && message.content) {
       return Promise.resolve({
         success: true,
         message,
@@ -64,7 +63,7 @@ export const sendVote = createAsyncThunk<
       currentChannel,
       messageId,
     );
-    if (selectedMessage) {
+    if (selectedMessage && isPollMessage(selectedMessage.message)) {
       return Promise.resolve({
         success: true,
         message: {

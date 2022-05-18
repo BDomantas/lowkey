@@ -77,19 +77,22 @@ const BottomPollModal = ({
 
   const onCreatePoll = () => {
     const sendPoll = async () => {
-      await dispatch(
-        sendMessage({
-          channelId,
-          message: {
-            content: {
-              question: text,
-              options: Object.values(options),
-              votes: 0,
+      const optionArray = Object.values(options);
+      if (optionArray.length > 0 && text) {
+        await dispatch(
+          sendMessage({
+            channelId,
+            message: {
+              content: {
+                question: text,
+                options: optionArray,
+                votes: 0,
+              },
             },
-          },
-          type: ContentType.poll,
-        }),
-      );
+            type: ContentType.poll,
+          }),
+        );
+      }
       setIsModalVisible(false);
       setOptions({});
       setText('');
