@@ -1,0 +1,15 @@
+{
+  "headerSubtitle": "$t(member, {\"count\": {{members}} }) • $t(online, {\"count\": {{online}} })",
+  "member_one": "{{count}} member",
+  "member_other": "{{count}} members",
+  "online": "{{count}} online",
+  "inputPlaceholder": "Message",
+  "createPoll": "create",
+  "pollModalHeader": "New Poll",
+  "pollQuestionTitle": "Question",
+  "pollQuestionPlaceholder": "Ask a question",
+  "addNewOption": "Add an option",
+  "optionsTitle": "Options",
+  "pollType": "Public Poll",
+  "pollVotes": "votes"
+}
