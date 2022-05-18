@@ -1,5 +1,10 @@
 import React from 'react';
-import {StyleSheet, FlatList, KeyboardAvoidingView} from 'react-native';
+import {
+  StyleSheet,
+  FlatList,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import MessageComponent from '@Components/Channel/Message';
 import {useAppDispatch, useAppSelector} from '@State/hooks';
 import {channelMessages} from '@State/slices/Channels/ChannelsSelectors';
@@ -37,8 +42,14 @@ const MessageList = ({
     <SafeAreaView style={styles.container} edges={['bottom', 'left', 'right']}>
       <KeyboardAvoidingView
         style={styles.flatList}
-        behavior="padding"
-        keyboardVerticalOffset={headerHeight + insets.bottom}>
+        behavior={Platform.select({
+          ios: 'padding',
+          android: 'height',
+        })}
+        keyboardVerticalOffset={Platform.select({
+          ios: headerHeight + insets.bottom,
+          android: 160,
+        })}>
         <FlatList
           style={styles.flatList}
           data={channelMessagesData}

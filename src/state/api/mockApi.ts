@@ -1,5 +1,4 @@
-import type {Message} from '@State/slices/Messages/MessagesSlice';
-import type {User} from '@State/slices/Users/UsersSlice';
+import type {Message} from '@State/slices/Messages/types';
 
 const mockUsersData = [
   {
